@@ -144,7 +144,7 @@ This template provides a way to upload the disk images that is generated from th
 
 The [build-disk.yml](./.github/workflows/build-disk.yml) Github Actions workflow creates a disk image from your OCI image by utilizing the [bootc-image-builder](https://osbuild.org/docs/bootc/). In order to use this workflow you must complete the following steps:
 
-1. Modify `disk_config/iso.toml` to point to your custom container image before generating an ISO image.
+1. `disk_config/iso.toml` is the canonical installer config. CI renders the final image reference automatically; for local builds, use `just build-iso ghcr.io/<username>/<image_name> <tag>` so the installer points at a reachable registry image.
 2. If you changed your image name from the default in `build.yml` then in the `build-disk.yml` file edit the `IMAGE_REGISTRY`, `IMAGE_NAME` and `DEFAULT_TAG` environment variables with the correct values. If you did not make changes, skip this step.
 3. Finally, if you want to upload your disk images to S3 then you will need to add your S3 configuration to the repository's Action secrets. This can be found by going to your repository settings, under `Secrets and Variables` -> `Actions`. You will need to add the following
   - `S3_PROVIDER` - Must match one of the values from the [supported list](https://rclone.org/s3/)
