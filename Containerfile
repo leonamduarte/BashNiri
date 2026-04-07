@@ -2,6 +2,9 @@
 FROM scratch AS ctx
 COPY build_files /
 
+# Build arguments
+ARG SHA_HEAD_SHORT
+
 # Base Image
 FROM ghcr.io/ublue-os/bazzite:stable
 

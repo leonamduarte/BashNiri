@@ -76,6 +76,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
+      - name: Pull container image
+        run: |
+          echo "Verifying container image is available..."
+          podman pull "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}" || {
+            echo "::error::Failed to pull image. Ensure the image has been built and pushed to the registry."
+            exit 1
+          }
+
       - name: Render ISO config
         if: matrix.disk-type == 'anaconda-iso'
         env:
