@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-dnf5 -y copr enable --never avengemedia/dms
+dnf5 -y copr enable avengemedia/dms
 
 dnf5 install -y \
 	niri \
@@ -12,8 +12,8 @@ dnf5 install -y \
 	neovim \
 	fish
 
-mkdir -p /etc/systemd/user
-cat >/etc/systemd/user/dms.service <<'EOF'
+mkdir -p /usr/lib/systemd/user
+cat >/usr/lib/systemd/user/dms.service <<'EOF'
 [Unit]
 Description=DankMaterialShell
 PartOf=graphical-session.target
@@ -26,5 +26,3 @@ Restart=on-failure
 [Install]
 WantedBy=graphical-session.target
 EOF
-
-systemctl --user enable dms.service || true
