@@ -28,7 +28,16 @@ dnf5 install -y \
 	npm \
 	rust \
 	kubectl \
-	helm
+	helm \
+	ripgrep \
+	fd \
+	unzip \
+	curl \
+	wget \
+	zip \
+	gcc \
+	make \
+	luarocks
 
 mkdir -p /usr/lib/systemd/user
 cat >/usr/lib/systemd/user/dms.service <<'EOF'
