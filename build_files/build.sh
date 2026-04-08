@@ -48,7 +48,21 @@ dnf5 install -y \
 	python3 \
 	python3-pip \
 	ruby \
-	lua
+	lua \
+	thunar \
+	thunar-archive-plugin \
+	thunar-volman \
+	gnome-disk-utility \
+	remmina \
+	freerdp \
+	ufw \
+	gufw \
+	blueman \
+	network-manager-applet \
+	nm-connection-editor \
+	polkit \
+	gnome-keyring \
+	libsecret
 
 mkdir -p /usr/lib/systemd/user
 cat >/usr/lib/systemd/user/dms.service <<'EOF'
