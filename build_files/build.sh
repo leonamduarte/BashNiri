@@ -10,6 +10,7 @@ dnf5 install -y \
 	quickshell \
 	git \
 	neovim \
+	emacs \
 	fish \
 	cups-pk-helper \
 	gnome-terminal \
