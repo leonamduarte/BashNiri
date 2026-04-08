@@ -38,7 +38,17 @@ dnf5 install -y \
 	zip \
 	gcc \
 	make \
-	luarocks
+	luarocks \
+	clang \
+	go \
+	haskell-platform \
+	openjdk \
+	kotlin \
+	elm \
+	python3 \
+	python3-pip \
+	ruby \
+	lua
 
 mkdir -p /usr/lib/systemd/user
 cat >/usr/lib/systemd/user/dms.service <<'EOF'
