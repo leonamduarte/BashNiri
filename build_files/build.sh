@@ -14,7 +14,8 @@ dnf5 install -y \
 	cups-pk-helper \
 	gnome-terminal \
 	alacritty \
-	cava
+	cava \
+	chezmoi
 
 mkdir -p /usr/lib/systemd/user
 cat >/usr/lib/systemd/user/dms.service <<'EOF'
@@ -30,3 +31,11 @@ Restart=on-failure
 [Install]
 WantedBy=graphical-session.target
 EOF
+
+# Clone and apply dotfiles
+if [ -d /run/host ]; then
+	mkdir -p /root
+	cd /root
+	git clone https://github.com/leonamduarte/dotfiles.git .local/share/chezmoi
+	HOME=/root chezmoi apply
+fi
