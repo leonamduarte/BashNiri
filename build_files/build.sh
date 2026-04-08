@@ -10,7 +10,11 @@ dnf5 install -y \
 	quickshell \
 	git \
 	neovim \
-	fish
+	fish \
+	cups-pk-helper \
+	gnome-terminal \
+	alacritty \
+	cava
 
 mkdir -p /usr/lib/systemd/user
 cat >/usr/lib/systemd/user/dms.service <<'EOF'
