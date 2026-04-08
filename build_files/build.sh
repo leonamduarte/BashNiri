@@ -15,7 +15,20 @@ dnf5 install -y \
 	gnome-terminal \
 	alacritty \
 	cava \
-	chezmoi
+	chezmoi \
+	lazygit \
+	yazi \
+	eza \
+	bat \
+	fzf \
+	zoxide \
+	podman \
+	docker \
+	nodejs \
+	npm \
+	rust \
+	kubectl \
+	helm
 
 mkdir -p /usr/lib/systemd/user
 cat >/usr/lib/systemd/user/dms.service <<'EOF'
@@ -38,4 +51,12 @@ if [ -d /run/host ]; then
 	cd /root
 	git clone https://github.com/leonamduarte/dotfiles.git .local/share/chezmoi
 	HOME=/root chezmoi apply
+fi
+
+# Set fish as default shell
+if [ -f /usr/bin/fish ]; then
+	echo /usr/bin/fish | tee -a /etc/shells
+	for user in $(awk -F: '/\/bin\/bash/ {print $1}' /etc/passwd); do
+		chsh -s /usr/bin/fish "$user" 2>/dev/null || true
+	done
 fi
